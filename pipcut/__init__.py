@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 import secrets
 
+base_dir = os.path.dirname(os.path.realpath(__file__))
 
 load_dotenv()
 app = Flask(__name__)
@@ -16,8 +17,7 @@ secret = secrets.token_urlsafe(32)
 
 app.secret_key = secret
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///urls.db"
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
