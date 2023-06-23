@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Analytics</title>
+    <title>Analytics</title>
 </head>
 <body>
     <h1>URL Analytics</h1>
@@ -19,7 +19,7 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for message in messages %}
-                <strong style="color:red;">{{message}}</strong>
+                <strong style="color:orange;">{{message}}</strong>
             {% endfor %}
         {% endif %}
     {% endwith %}
