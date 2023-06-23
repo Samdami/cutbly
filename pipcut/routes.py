@@ -9,7 +9,7 @@ from .models import Url
 import qrcode
 import io
 import shortuuid
-from . import app, db, Mail, Cache
+from . import app, db, mail, cache
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -109,7 +109,7 @@ def home():
 
 @app.route("/dashboard")
 @login_required
-@Cache.cached(timeout=50)
+@cache.cached(timeout=50)
 def dashboard():
     urls = (
         Url.query.filter_by(user_id=current_user.id)
@@ -126,7 +126,7 @@ def about():
 
 
 @app.route("/<short_url>")
-@Cache.cached(timeout=50)
+@cache.cached(timeout=50)
 def redirect_url(short_url):
     url = Url.query.filter_by(short_url=short_url).first()
     if url:
@@ -147,7 +147,7 @@ def generate_qr_code_url(short_url):
 
 @app.route("/analytics/<short_url>")
 @login_required
-@Cache.cached(timeout=50)
+@cache.cached(timeout=50)
 def url_analytics(short_url):
     url = Url.query.filter_by(short_url=short_url).first()
     if url:
@@ -157,7 +157,7 @@ def url_analytics(short_url):
 
 @app.route("/history")
 @login_required
-@Cache.cached(timeout=50)
+@cache.cached(timeout=50)
 def link_history():
     urls = (
         Url.query.filter_by(user_id=current_user.id)

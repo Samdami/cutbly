@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 import secrets
 
-base_dir = os.path.dirname(os.path.realpath(__file__))
+# base_dir = os.path.dirname(os.path.realpath(__file__))
 
 load_dotenv()
 app = Flask(__name__)
@@ -17,7 +17,11 @@ secret = secrets.token_urlsafe(32)
 
 app.secret_key = secret
 
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db'
+
+app.config["SQLACHEMY_DATABASE_URL"] = os.environ.get("DATABASE_URL")
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -28,12 +32,13 @@ app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 app.config["CACHE_TYPE"] = "SimpleCache"
 app.config["CACHE_DEFAULT_TIMEOUT"] = 300
+# postgres://pipcut_user:Ng626gxN13C8BGaVeKmJQj5jnOWJ9g72@dpg-ciar7ll9aq007teh7370-a.oregon-postgres.render.com/pipcut
 
 
 db = SQLAlchemy(app)
-Mail = Mail(app)
-Share = Share(app)
-Cache = Cache(app)
+mail = Mail(app)
+share = Share(app)
+cache = Cache(app)
 
 
 login_manager = LoginManager()
@@ -49,3 +54,5 @@ def load_user(user_id):
 from . import routes
 from .models import User
 from .models import Url
+
+db.create_all()
