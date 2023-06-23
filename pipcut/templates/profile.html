@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pipcut</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body class="is-preload">
+        <header id="header">   
+            <h1>Scissor</h1>
+            <nav class="links">
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+  <h1>Welcome {{current_user.username}}!</h1>
+  <div>
+    <h3>Email</h3>
+    <p>Email: {{current_user.email}}</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}URL History{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+<section class="history">
+{% if urls %}
+<div class="table-container">
+  <table>
+
+	<tbody>
+		{% for url in urls %}
+		<tr>
+		<td><a href="{{ url_for('redirect_url', short_url=url.short_url) }}" target="_blank">{{host}}{{url.short_url}}</a></td>
+		<td>{{ url.long_url }}</td>
+		<td>{{ url.created_at.strftime('%I:%M%p %B %d, %Y') }}</td>
+		<td><a href="{{ url_for('delete', id=url.id) }}">Delete</a></td>
+		</tr>
+		{% endfor %}
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for message in messages %}
+					<strong style="color:green;">{{message}}</strong>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</tbody>
+  </table>
+</div>
+{% else %}
+  <h1>You do not have any urls yet. <a href="{{url_for('home')}}">Click to Create</a> </h1>
+{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}URL Shortener{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+<link href="../static/animate.css" rel="stylesheet">
+<section class="mix">
+    <div class="mixtext">
+
+        {% if current_user.is_authenticated %}
+        <h3 style="padding-bottom: 5px;">Hello {{current_user.username|capitalize}}     <SCRIPT LANGUAGE="JavaScript">
+            currentTime=new Date();
+            //getHour() function will retrieve the hour from current time
+            if(currentTime.getHours()<12)
+            document.write("Good Morning");
+            else if(currentTime.getHours()<17)
+            document.write("Good Afternoon");
+            else 
+            document.write("Good Evening");
+        //End of JavaScript functions
+            </SCRIPT></h3>
+        <div class="url-form">
+            <form method="POST">
+                <input type="text" name="long_url" id="long_url" placeholder="https://example.com/" required>
+                <input type="text" name="custom_url" id="custom_url" placeholder="Enter custom URL'Samdami'">
+                <br>
+                <button type="submit">Shorten URL</button>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <small style="color: gray; display: flex; text-align: center;">{{message}}</small>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form> 
+        </div>
+</div>
+</section>
+
+
+        {% else %}
+<!--hero header-->
+<section class="py-7 py-md-0 bg-hero" id="home">
+    <div class="container">
+        <div class="row vh-md-100">
+            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+                <h1 class="heading-black text-capitalize">Welcome to Pipcut.</h1>
+                <p class="lead py-3">Takes any long URL that you provide and creates a unique, shortened link for it. When someone clicks on the shortened link, they are automatically redirected to the original long URL.</p>
+                <button class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    
+                   <a href="{{url_for('signup')}}">Sign up for free</a>
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+        {% endif %}
+    </div>
+
+     
+</div>
+{% endblock %}

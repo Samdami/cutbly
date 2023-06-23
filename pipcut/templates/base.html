@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIPCUT - {% block title%}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+   
+
+</head>
+<body>
+    <header class="nav-el">
+        <a href="{{url_for('home')}}" class="logo"></a>
+        <ul class="navlist">
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
+            <li><a href="{{url_for('link_history')}}">History</a></li>
+            <li><a href="{{url_for('logout')}}">Logout</a></li>
+            {% else %}
+            <li><a href="{{url_for('login')}}">Login</a></li>
+            {% endif %}
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+    </header>
+    
+    <div class="container">
+        {% block content%}{% endblock %}
+    </div>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/copy.js')}}"></script>
+</body>
+</html>
