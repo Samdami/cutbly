@@ -19,7 +19,7 @@ app.secret_key = secret
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db'
 
-app.config["SQLACHEMY_DATABASE_URL"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
