@@ -22,7 +22,7 @@ app.secret_key = secret
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
 # app.config["MAIL_SERVER"] = "smtp.gmail.com"
 # app.config["MAIL_PORT"] = 465
