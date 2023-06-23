@@ -57,4 +57,3 @@ from . import routes
 from .models import User
 from .models import Url
 
-db.create_all()
