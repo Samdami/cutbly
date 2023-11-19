@@ -23,12 +23,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['CACHE_TYPE'] = 'SimpleCache'
-app.config['CACHE_DEFAULT_TIMEOUT'] = 300
-# postgres://pipcut_user:Ng626gxN13C8BGaVeKmJQj5jnOWJ9g72@dpg-ciar7ll9aq007teh7370-a.oregon-postgres.render.com/pipcut
-
+# app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["CACHE_TYPE"] = "SimpleCache"
+app.config["CACHE_DEFAULT_TIMEOUT"] = 300
 
 db = SQLAlchemy(app)
 mail = Mail(app)
@@ -49,4 +47,3 @@ def load_user(user_id):
 from . import routes
 from .models import User
 from .models import Url
-
