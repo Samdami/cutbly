@@ -19,11 +19,12 @@ app.secret_key = secret
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db'
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+# app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dams_user:PGHQ7g8rQKgradIsKeQM4AMFn0eP0EnN@dpg-clct1seg1b2c73f1qbd0-a.oregon-postgres.render.com/dams'
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
+app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["CACHE_TYPE"] = "SimpleCache"
 app.config["CACHE_DEFAULT_TIMEOUT"] = 300

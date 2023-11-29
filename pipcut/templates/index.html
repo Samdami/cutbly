@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}URL Shortener{% endblock %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="../static/base.css">
+<link rel="stylesheet" type="text/css" href="../static/style.css">
 <link href="../static/animate.css" rel="stylesheet">
 <section class="mix">
     <div class="mixtext">
@@ -18,7 +18,11 @@
             document.write("Good Evening");
         //End of JavaScript functions
             </SCRIPT></h3>
-        <div class="url-form">
+          <section id="other" class="section">
+            <div class="container">
+              <div class="searchbar flex items-center justify-between gap-2">
+
+        <div class="input_box flex-1">
             <form method="POST">
                 <input type="text" name="long_url" id="long_url" placeholder="https://example.com/" required>
                 <input type="text" name="custom_url" id="custom_url" placeholder="Enter custom URL'Samdami'">
@@ -33,27 +37,29 @@
                 {% endwith %}
             </form> 
         </div>
-</div>
+</div>        </div>
 </section>
 
 
         {% else %}
 <!--hero header-->
-<section class="py-7 py-md-0 bg-hero" id="home">
+<section id="hero" class="section">
     <div class="container">
-        <div class="row vh-md-100">
-            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-                <h1 class="heading-black text-capitalize">Welcome to Pipcut.</h1>
-                <p class="lead py-3">Takes any long URL that you provide and creates a unique, shortened link for it. When someone clicks on the shortened link, they are automatically redirected to the original long URL.</p>
-                <button class="btn btn-primary d-inline-flex flex-row align-items-center">
+      <div class="hero_section flex items-center justify-between">
+        <div class="hero_section_left">
+                <h1>Welcome to Cutbly.</h1>
+                <p>Takes any long URL that you provide and creates a unique, shortened link for it. When someone clicks on the shortened link, they are automatically redirected to the original long URL.</p>
+                <button class="btn-primary ml-2">
                     
                    <a href="{{url_for('signup')}}">Sign up for free</a>
                    
                     <em class="ml-2" data-feather="arrow-right"></em>
                 </button>
-                <button class="me">
+                <button class="btn-primary ml-2">
                     <a href="{{url_for('login')}}"> Login</a>
                 </button>
+        </div>
+        <img src="../static/image/url.png" alt="hero_image" />
             </div>
         </div>
     </div>
