@@ -2,13 +2,16 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
-from flask_share import Share
+
+# from flask_migrate import Migrate
+
+# from flask_share import Share
 from flask_caching import Cache
 import os
 from dotenv import load_dotenv
 import secrets
 
-# base_dir = os.path.dirname(os.path.realpath(__file__))
+base_dir = os.path.dirname(os.path.realpath(__file__))
 
 load_dotenv()
 app = Flask(__name__)
@@ -17,21 +20,34 @@ secret = secrets.token_urlsafe(32)
 
 app.secret_key = secret
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db'
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///urls.db"
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dams_user:PGHQ7g8rQKgradIsKeQM4AMFn0eP0EnN@dpg-clct1seg1b2c73f1qbd0-a.oregon-postgres.render.com/dams'
+# app.config["SQLALCHEMY_DATABASE_URI"] = (
+#     "postgresql://dams_user:PGHQ7g8rQKgradIsKeQM4AMFn0eP0EnN@dpg-clct1seg1b2c73f1qbd0-a.oregon-postgres.render.com/dams"
+# )
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(base_dir, 'database.db')
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+#     base_dir, "database.db"
+# )
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+    base_dir, "database.db"
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["CACHE_TYPE"] = "SimpleCache"
-app.config["CACHE_DEFAULT_TIMEOUT"] = 300
+
+# app.config["m3pgWQMM7276cJvcEFKIyw"] = os.environ.get("m3pgWQMM7276cJvcEFKIyw")
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# app.config["CACHE_TYPE"] = "SimpleCache"
+# app.config["CACHE_DEFAULT_TIMEOUT"] = 300
 
 db = SQLAlchemy(app)
+# migrate = Migrate(app, db)  # Initialize Flask-Migrate
+
 mail = Mail(app)
-share = Share(app)
+# share = Share(app)
 cache = Cache(app)
 
 
@@ -48,3 +64,7 @@ def load_user(user_id):
 from . import routes
 from .models import User
 from .models import Url
+
+with app.app_context():
+    db.create_all()
+    app.run(debug=True)

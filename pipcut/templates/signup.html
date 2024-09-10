@@ -1,40 +1,40 @@
 {% extends "auth.html" %}
 {% block title %}Sign Up{% endblock %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="../static/base.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='signup.css') }}">
 
-    <form method="post" style="padding: 10px;">
-        <h2>Sign Up</h2>
+<div class="signup-box">
+    <h2>Create account</h2>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    <form method="post">
         <div class="inputbox">
-            <ion-icon name="person-outline"></ion-icon>
             <input type="text" name="username" required>
-            <label for="">Username</label>
+            <label>Enter your name</label>
         </div>
         <div class="inputbox">
-            <ion-icon name="mail-outline"></ion-icon>
             <input type="email" name="email" required>
-            <label for="">Email</label>
+            <label>Enter your email</label>
         </div>
         <div class="inputbox">
-            <ion-icon name="lock-closed-outline"></ion-icon>
             <input type="password" name="password" required>
-            <label for="">Password</label>
+            <label>Create password</label>
         </div>
         <div class="inputbox">
-            <ion-icon name="document-lock-outline"></ion-icon>
             <input type="password" name="confirm_password" required>
-            <label for="">Confirm Password</label>
+            <label>Confirm password</label>
         </div>
-        <button type="submit">Sign Up</button>
+        <!-- <div class="checkbox">
+            <input type="checkbox" name="terms" required>
+            <label>I accept all terms & conditions</label>
+        </div> -->
+        <button type="submit">Sign up</button>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <small style="color: gray; display: flex; text-align: center;">{{message}}</small>
+                    <small class="message">{{ message }}</small>
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <div class="register">
-            <p>Already have a account? <a href="{{url_for('login')}}">Login</a></p>
-        </div>
     </form>
+</div>
 {% endblock %}

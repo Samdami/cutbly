@@ -1,7 +1,7 @@
-
+{% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="../static/dash.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dash.css') }}">
 <section class="mix">
     {% if current_user.is_authenticated %}
         {% if urls %}
@@ -9,30 +9,42 @@
             <div class="card">
                 <img class="card-img-top" src="{{url_for('generate_qr_code_url', short_url=url.short_url)}}" alt="QR Code">
                 <div class="card-body">
-                  <h5 class="card-title">Number Of Clicks: {{url.clicks}} <br>Time: {{ url.created_at.strftime('%B %d, %Y') }}</h5>
+                  <h5 class="card-title">Number of Clicks: {{url.clicks}} <br>Created on: {{ url.created_at.strftime('%B %d, %Y') }}</h5>
                   <p class="card-text">{{ url.long_url }}</p>
                   <p>Shortened Link: <br>
                     <a href="{{ url_for('redirect_url', short_url=url.short_url) }}">
-                    <input type="text" value="{{host}}{{url.short_url}}" id="myInput" disabled>
+                      <input type="text" value="{{host}}{{url.short_url}}" id="myInput" disabled>
                     </a>
-                    </p>
-                  <button onclick="myFunction()">Copy Link</button>
+                  </p>
+                  <button class="copy-button" onclick="copyToClipboard('{{host}}{{url.short_url}}')">Copy Link</button>
                 </div>
               </div>
             {% endfor %}
         {% else %}
-            <h1>HI <a href="{{url_for('home')}}">Pipcut Here</a> </h1>
+            <h1>Hello! <a href="{{url_for('home')}}">Pipcut Here</a></h1>
         {% endif %}
     {% else %}
-    <h1>Please login to see your urls</h1>
+    <h1>Please log in to see your URLs</h1>
     {% endif %}
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for message in messages %}
-                <strong style="color:orange;">{{ message }}</strong>
+                <strong class="flash-message">{{ message }}</strong>
             {% endfor %}
         {% endif %}
     {% endwith %}
 </section>
-    
+
+<script>
+function copyToClipboard(text) {
+    const input = document.createElement('input');
+    input.setAttribute('value', text);
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    alert('Link copied to clipboard');
+}
+</script>
+
 {% endblock %}

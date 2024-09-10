@@ -1,43 +1,34 @@
-
-
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="../static/logins.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='logins.css') }}">
 <div class="login-box">
-<h2>Login</h2>
-<form method="post">
-  
-  <div class="inputbox">
-      <ion-icon name="mail-outline"></ion-icon>
-      <input type="email" name="email" required>
-      <label for="">Email</label>
-  </div>
-  
-  <div class="inputbox">
-      <ion-icon name="lock-closed-outline"></ion-icon>
-      <input type="password" name="password" required>
-      <label for="">Password</label>
-  </div>
-  
-  <button type="submit">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    
-    Log in</button>
-  {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          {% for message in messages %}
-          <small>{{message}}</small>
-          {% endfor %}
-      {% endif %}
-  {% endwith %}
+    <h2>User Login</h2>
+    <form method="post">
+        <div class="inputbox">
+            <!-- <img src="{{ url_for('static', filename='user.png') }}" alt="User Icon"> -->
+            <input type="email" name="email" required>
+            <label>Email</label>
+        </div>
 
-  <div class="register">
-      <p>Don't have a account <a href="{{url_for('signup')}}">Sign Up</a></p>
-  </div>
+        <div class="inputbox">
+            <!-- <img src="{{ url_for('static', filename='lock.png') }}" alt="Lock Icon"> -->
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
 
-  </form>
+        <button type="submit">Login</button>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <small>{{ message }}</small>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="register">
+            <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+        </div>
+    </form>
 </div>
-  {% endblock %}
+{% endblock %}

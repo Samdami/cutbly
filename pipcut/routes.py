@@ -1,11 +1,8 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
-from flask_share import Share
-from flask_mail import Message
 from werkzeug.security import generate_password_hash, check_password_hash
-from random import randint
-from .models import User
-from .models import Url
+from flask_mail import Message
+from .models import User, Url
 import qrcode
 import io
 import shortuuid
@@ -16,19 +13,24 @@ from . import app, db, mail, cache
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("home"))
+
     if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
+        print("Form data:", request.form)  # Debug statement
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        if not email or not password:
+            flash("Email and password are required.")
+            return redirect(url_for("login"))
+
         user = User.query.filter_by(email=email.lower()).first()
 
-        if user:
-            if check_password_hash(user.password, password):
-                login_user(user)
-                return redirect(url_for("home"))
-            else:
-                flash("Password incorrect. Please try again.")
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for("home"))
         else:
-            flash("Email is not registered yet.")
+            flash("Invalid email or password. Please try again.")
+
     return render_template("login.html")
 
 
@@ -43,13 +45,19 @@ def logout():
 def signup():
     if current_user.is_authenticated:
         return redirect(url_for("home"))
+
     if request.method == "POST":
-        email = request.form["email"]
-        username = request.form["username"]
-        password = request.form["password"]
-        confirm_password = request.form["confirm_password"]
-        user = User.query.filter_by(email=email.lower()).first()
-        if user:
+        print("Form data:", request.form)  # Debug statement
+        email = request.form.get("email")
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
+
+        if not email or not username or not password or not confirm_password:
+            flash("All fields are required.")
+            return redirect(url_for("signup"))
+
+        if User.query.filter_by(email=email.lower()).first():
             flash("Email already exists.")
         elif len(username) < 2:
             flash("Username must be greater than 1 character.")
@@ -58,14 +66,21 @@ def signup():
         elif password != confirm_password:
             flash("Passwords don't match.")
         else:
-            new_user = User(
-                email=email.lower(),
-                username=username,
-                password=generate_password_hash(password, method="sha256"),
-            )
-
-            db.session.add(new_user)
-            db.session.commit()
+            try:
+                hashed_password = generate_password_hash(
+                    password, method="pbkdf2:sha256"
+                )
+                new_user = User(
+                    email=email.lower(),
+                    username=username.lower(),
+                    password=hashed_password,
+                )
+                db.session.add(new_user)
+                db.session.commit()
+                flash("Account created successfully! Please log in.")
+                return redirect(url_for("login"))
+            except Exception as e:
+                flash(f"An error occurred: {e}")
 
     return render_template("signup.html")
 
@@ -81,18 +96,23 @@ def generate_qr_code(url):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        long_url = request.form["long_url"]
-        custom_url = request.form["custom_url"] or None
+        long_url = request.form.get("long_url")
+        custom_url = request.form.get("custom_url") or None
+
+        if not long_url:
+            flash("Long URL is required.")
+            return redirect(url_for("home"))
+
         if custom_url:
-            existing_url = Url.query.filter_by(custom_url=custom_url).first()
-            if existing_url:
+            if Url.query.filter_by(custom_url=custom_url).first():
                 flash("That custom URL already exists. Please try another one!")
                 return redirect(url_for("home"))
             short_url = custom_url
-        elif long_url[:4] != "http":
-            long_url = "http://" + long_url
         else:
+            if long_url[:4] != "http":
+                long_url = "http://" + long_url
             short_url = shortuuid.uuid()[:6]
+
         url = Url(
             long_url=long_url,
             short_url=short_url,
@@ -185,7 +205,7 @@ def edit_url(id):
     url = Url.query.get_or_404(id)
     if url:
         if request.method == "POST":
-            custom_url = request.form["custom_url"]
+            custom_url = request.form.get("custom_url")
             if custom_url:
                 existing_url = Url.query.filter_by(custom_url=custom_url).first()
                 if existing_url:
