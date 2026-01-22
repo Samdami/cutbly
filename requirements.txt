@@ -24,7 +24,7 @@ multidict==6.0.4
 Pillow==12.1.0
 psycopg2-binary==2.9.6
 pypng==0.20220715.0
-pyshortner==0.0.4
+pyshortner
 python-dotenv==0.21.1
 qrcode==7.4.2
 redis==4.5.5
