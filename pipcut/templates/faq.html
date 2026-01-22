@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% block title %}FAQ - Cutbly{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 bg-gradient-to-br from-[#1f5469] to-[#3a8fa3] text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">Frequently Asked Questions</h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        Quick answers to common questions about Cutbly. Can't find what you're looking for? Contact our support team.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Categories -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <!-- General Questions -->
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#1f5469] flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        General Questions
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">What is Cutbly?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Cutbly is a modern URL shortening service that helps you create short, memorable links from long URLs. We also provide powerful analytics, custom branding, and link management tools to help you track and optimize your online presence.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Is Cutbly free to use?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! Cutbly offers a free plan that includes basic link shortening, analytics, and link management features. We also offer premium plans with advanced features like custom domains, team collaboration, and priority support for power users and businesses.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Do I need to create an account?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">You can create shortened links without an account, but signing up unlocks powerful features like link management, detailed analytics, custom aliases, and the ability to edit or delete your links. It's free to create an account!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security & Privacy -->
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#1f5469] flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        </div>
+        Security & Privacy
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">How does Cutbly keep my data safe?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">We use military-grade encryption (TLS 1.3) to protect all data in transit and at rest. Our servers undergo regular security audits and compliance checks. We never sell or share your data with third parties, and all your information is stored securely in encrypted databases.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Are shortened links safe to click?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! We automatically scan all URLs for malware, phishing attempts, and malicious content. If a suspicious link is detected, we block it immediately and notify the link creator. We also provide link previews so users can see where a link leads before clicking.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">What data do you collect from link clicks?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">We collect anonymous analytics data including: click timestamps, referrer information, geographic location (country/city), device type, browser, and operating system. We do NOT collect personally identifiable information (PII) and all data is anonymized in compliance with GDPR and privacy regulations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link Management -->
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#1f5469] flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        Link Management
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Can I delete my shortened links?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! You have complete control over all your links. You can delete any shortened link from your dashboard at any time. Once deleted, the short URL will no longer redirect to the original destination and will show a "link not found" message.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Do shortened links expire?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">No, shortened links don't expire automatically. They'll remain active indefinitely unless you manually delete them. This means you can create permanent short URLs that work forever. Premium users can optionally set custom expiration dates for time-sensitive campaigns.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Can I edit a link after creating it?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! If you're logged in, you can edit the destination URL of any shortened link you've created. The short URL stays the same, but it will redirect to the new destination. This is useful for updating campaign links without changing the short URL you've already shared.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Can I customize my short URLs?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Absolutely! You can create custom aliases for your links (e.g., cutbly.com/myevent) instead of random characters. Custom aliases must be unique, between 3-20 characters, and can contain letters, numbers, and hyphens. This makes your links more memorable and branded.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics -->
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#1f5469] flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+        </div>
+        Analytics
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">How accurate is the analytics?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Our analytics are highly accurate, tracking 99.9% of clicks. We use advanced detection algorithms to filter out bot traffic and provide you with genuine click data you can trust. All data is updated in real-time, so you can monitor your link performance as it happens.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">What analytics data can I see?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">You can view total clicks, click trends over time, geographic data (countries and cities), referrer sources, device types (mobile/desktop/tablet), browsers, operating systems, and peak click times. Premium users get access to more detailed reports and data exports.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Can I export analytics data?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! Premium users can export analytics data in CSV or JSON format for further analysis. This includes all click data, timestamps, geographic information, and device details. You can also integrate with analytics platforms via our API.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Questions -->
+    <div class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#1f5469] flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        </div>
+        Technical Questions
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Does Cutbly have an API?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! We offer a comprehensive REST API that allows you to integrate Cutbly into your applications. You can create, manage, and track shortened links programmatically. API access is available for free accounts with rate limits, and premium users get higher limits and priority support.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">Can I use my own domain?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Yes! Premium users can connect their own custom domains (e.g., go.yourbrand.com) for branded short links. This helps build trust and brand recognition. Setup is simple—we provide step-by-step DNS configuration instructions, and our support team is ready to help.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <button class="faq-toggle w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+            <span class="font-semibold text-lg text-gray-900">What are the rate limits?</span>
+            <svg class="faq-icon w-6 h-6 text-[#1f5469] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content hidden px-8 pb-6">
+            <p class="text-gray-600 leading-relaxed">Free accounts can create up to 100 links per month with unlimited redirects. Premium accounts have higher limits: Pro users get 1,000 links/month, Business users get 10,000 links/month, and Enterprise users have no limits. All plans include unlimited link clicks and redirects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Still Have Questions Section -->
+<section class="py-24 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="bg-white rounded-3xl p-12 shadow-xl border border-gray-200">
+      <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#1f5469] to-[#3a8fa3] flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+      </div>
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+      <p class="text-lg text-gray-600 mb-8">Can't find the answer you're looking for? Our support team is here to help!</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="mailto:support@cutbly.com" class="bg-[#1f5469] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#163d4d] transition-colors">
+          Contact Support
+        </a>
+        <a href="{{ url_for('home') }}" class="border-2 border-[#1f5469] text-[#1f5469] px-8 py-4 rounded-full font-bold text-lg hover:bg-[#1f5469]/5 transition-colors">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(button) {
+    const item = button.parentElement;
+    const content = item.querySelector('.faq-content');
+    const icon = item.querySelector('.faq-icon');
+    
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => {
+      if (c !== content) c.classList.add('hidden');
+    });
+    document.querySelectorAll('.faq-icon').forEach(i => {
+      if (i !== icon) i.style.transform = 'rotate(0deg)';
+    });
+    
+    // Toggle current FAQ
+    content.classList.toggle('hidden');
+    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+  }
+</script>
+
+{% endblock %}

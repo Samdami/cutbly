@@ -124,7 +124,24 @@ def home():
         return redirect(url_for("dashboard"))
 
     urls = Url.query.order_by(Url.created_at.desc()).limit(10).all()
-    return render_template("index.html", urls=urls)
+
+    total_links = 0
+    total_clicks = 0
+    if current_user.is_authenticated:
+        try:
+            total_links = Url.query.filter_by(user_id=current_user.id).count()
+            total_clicks = (
+                db.session.query(db.func.coalesce(db.func.sum(Url.clicks), 0))
+                .filter(Url.user_id == current_user.id)
+                .scalar()
+            )
+        except Exception:
+            # Leave defaults if any DB error occurs
+            pass
+
+    return render_template(
+        "index.html", urls=urls, total_links=total_links, total_clicks=total_clicks
+    )
 
 
 @app.route("/dashboard")
@@ -140,9 +157,50 @@ def dashboard():
     return render_template("dashboard.html", urls=urls, host=host)
 
 
+@app.route("/profile")
+@login_required
+def profile():
+    return render_template("profile.html")
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+
+@app.route("/cookies")
+def cookies():
+    return render_template("cookies.html")
+
+
+@app.route("/accessibility")
+def accessibility():
+    return render_template("accessibility.html")
+
+
+@app.route("/report-abuse")
+def report_abuse():
+    return render_template("report_abuse.html")
+
+
+@app.route("/features")
+def features():
+    return render_template("features.html")
+
+
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
 
 
 @app.route("/<short_url>")
@@ -162,7 +220,7 @@ def generate_qr_code_url(short_url):
     if url:
         img_io = generate_qr_code(request.host_url + url.short_url)
         return img_io.getvalue(), 200, {"Content-Type": "image/png"}
-    return "URL not found."
+    return "URL not found.", 404
 
 
 @app.route("/analytics/<short_url>")

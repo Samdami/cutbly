@@ -1,40 +1,128 @@
-{% extends "auth.html" %}
-{% block title %}Sign Up{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Sign Up - Cutbly{% endblock %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='signup.css') }}">
 
-<div class="signup-box">
-    <h2>Create account</h2>
-    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
-    <form method="post">
-        <div class="inputbox">
-            <input type="text" name="username" required>
-            <label>Enter your name</label>
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Column - Promotional Content -->
+      <div>
+        <span class="inline-block text-[#1f5469] font-semibold text-sm uppercase tracking-wider mb-4">Create Account</span>
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Start shortening links</h1>
+        <p class="text-lg text-gray-600 max-w-xl">Join Cutbly for free and unlock branded links, analytics, and more.</p>
+      </div>
+      
+      <!-- Right Column - Sign Up Form -->
+      <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8">
+        <div class="mb-8">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1f5469] to-[#3a8fa3] flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
+          <p class="text-gray-600">Start shortening links for free today</p>
         </div>
-        <div class="inputbox">
-            <input type="email" name="email" required>
-            <label>Enter your email</label>
-        </div>
-        <div class="inputbox">
-            <input type="password" name="password" required>
-            <label>Create password</label>
-        </div>
-        <div class="inputbox">
-            <input type="password" name="confirm_password" required>
-            <label>Confirm password</label>
-        </div>
-        <!-- <div class="checkbox">
-            <input type="checkbox" name="terms" required>
-            <label>I accept all terms & conditions</label>
-        </div> -->
-        <button type="submit">Sign up</button>
-        {% with messages = get_flashed_messages() %}
+        
+        <form method="post" class="space-y-5">
+          <div>
+            <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+            <input type="text" id="username" name="username" required 
+                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1f5469] focus:ring-2 focus:ring-[#1f5469]/20 outline-none transition-all" 
+                   placeholder="John Doe" />
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+            <input type="email" id="email" name="email" required 
+                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1f5469] focus:ring-2 focus:ring-[#1f5469]/20 outline-none transition-all" 
+                   placeholder="your.email@example.com" />
+          </div>
+          
+          <div>
+            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+            <input type="password" id="password" name="password" required minlength="8" 
+                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1f5469] focus:ring-2 focus:ring-[#1f5469]/20 outline-none transition-all" 
+                   placeholder="At least 8 characters" />
+            <p class="text-xs text-gray-500 mt-1">Must be at least 8 characters long</p>
+          </div>
+          
+          <div>
+            <label for="confirm_password" class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required minlength="8" 
+                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1f5469] focus:ring-2 focus:ring-[#1f5469]/20 outline-none transition-all" 
+                   placeholder="Confirm your password" />
+          </div>
+          
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" required class="w-4 h-4 mt-1 rounded border-gray-300 text-[#1f5469] focus:ring-[#1f5469]" />
+            <span class="text-sm text-gray-600">I agree to the <a href="#" class="text-[#1f5469] font-semibold hover:text-[#163d4d]">Terms of Service</a> and <a href="#" class="text-[#1f5469] font-semibold hover:text-[#163d4d]">Privacy Policy</a></span>
+          </label>
+          
+          {% with messages = get_flashed_messages() %}
             {% if messages %}
+              <div class="p-4 rounded-xl bg-red-50 border border-red-200">
                 {% for message in messages %}
-                    <small class="message">{{ message }}</small>
+                  <p class="text-sm text-red-600">{{ message }}</p>
                 {% endfor %}
+              </div>
             {% endif %}
-        {% endwith %}
-    </form>
+          {% endwith %}
+          
+          <button type="submit" class="w-full btn-primary text-white px-6 py-4 rounded-full font-bold text-lg">Create Account</button>
+        </form>
+        
+        <div class="mt-6 text-center">
+          <p class="text-gray-600">Already have an account? <a href="{{ url_for('login') }}" class="text-[#1f5469] font-semibold hover:text-[#163d4d] transition-colors">Log in</a></p>
+        </div>
+        
+        <div class="mt-8 pt-6 border-t border-gray-100">
+          <p class="text-center text-sm text-gray-500 mb-4">Or sign up with</p>
+          <div class="grid grid-cols-3 gap-3">
+            <button type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors" aria-label="Sign up with Google">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </button>
+            <button type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors" aria-label="Sign up with Facebook">
+              <svg class="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </button>
+            <button type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors" aria-label="Sign up with GitHub">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Success Message -->
+<div id="successMessage" class="fixed top-24 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-2xl px-8 py-4 z-[60] hidden items-center gap-4">
+  <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+    <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+  </div>
+  <div>
+    <p class="font-bold text-gray-900">Success!</p>
+    <p class="text-sm text-gray-600" id="successMessageText"></p>
+  </div>
 </div>
+
+<script>
+  function showSuccessMessage(message) {
+    const successMsg = document.getElementById('successMessage');
+    const successText = document.getElementById('successMessageText');
+    successText.textContent = message;
+    successMsg.style.display = 'flex';
+    setTimeout(() => { successMsg.style.display = 'none'; }, 2500);
+  }
+
+  // Show success message on successful signup
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {% if category == 'success' %}
+          showSuccessMessage('{{ message }}');
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</script>
+
 {% endblock %}

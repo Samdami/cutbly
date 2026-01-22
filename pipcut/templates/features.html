@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Features - Cutbly{% endblock %}
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-32 pb-20 bg-gradient-to-br from-[#1f5469] to-[#3a8fa3] text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-10">
+      <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">Everything You Need to Shorten, Brand, and Track</h1>
+      <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+        Cutbly makes it simple to create short links, manage them at scale, and measure performance with beautiful analytics.
+      </p>
+    </div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40L60 50C120 60 240 80 360 76.7C480 73 600 47 720 36.7C840 27 960 33 1080 43.3C1200 53 1320 67 1380 73.3L1440 80V0H0V40Z" fill="white"/></svg>
+  <div class="sr-only">Decorative</div>
+</section>
+
+<!-- Core Features -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Link Editor -->
+      <div id="link-editor" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Link Editor</h3>
+        <p class="text-gray-600">Create, edit, and customize short links with ease. Update destinations, titles, and aliases anytime without breaking your URLs.</p>
+      </div>
+
+      <!-- Link Management -->
+      <div id="link-management" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Link Management</h3>
+        <p class="text-gray-600">Organize links by campaigns, tags, and projects. Bulk actions make managing thousands of links fast and reliable.</p>
+      </div>
+
+      <!-- Branded Links -->
+      <div id="branded-links" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354l6 3.464v6.364l-6 3.464-6-3.464V7.818l6-3.464z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Branded Links</h3>
+        <p class="text-gray-600">Increase trust and CTR with custom aliases and your own domain. Make every link look and feel like your brand.</p>
+      </div>
+
+      <!-- URL Tracking -->
+      <div id="url-tracking" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3v18m-7-7h18"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">URL Tracking</h3>
+        <p class="text-gray-600">See clicks, referrers, devices, and geolocation. Know what works, where, and why—so you can optimize with confidence.</p>
+      </div>
+
+      <!-- QR Generator -->
+      <div id="qr-generator" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm3 11h4m-7 0h1m-1 3h1m3 3h4M14 17h3"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">QR Generator</h3>
+        <p class="text-gray-600">Instantly generate QR codes for any short link. Perfect for print, events, packaging, and offline campaigns.</p>
+      </div>
+
+      <!-- Short URL API -->
+      <div id="short-url-api" class="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 rounded-xl bg-[#1f5469] flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Short URL API</h3>
+        <p class="text-gray-600">Integrate Cutbly with your stack. Programmatically create, manage, and analyze links with a developer-friendly API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

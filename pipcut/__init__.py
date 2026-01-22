@@ -64,7 +64,3 @@ def load_user(user_id):
 from . import routes
 from .models import User
 from .models import Url
-
-with app.app_context():
-    db.create_all()
-    app.run(debug=True)

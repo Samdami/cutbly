@@ -1,0 +1,52 @@
+/* Separated styles from htm.html */
+
+/* Box sizing reset */
+body {
+	box-sizing: border-box;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.gradient-bg {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-card {
+	transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+	transform: translateY(-4px);
+}
+
+.url-item {
+	transition: all 0.2s ease;
+}
+
+.url-item:hover {
+	background-color: #f9fafb;
+}
+
+.copy-btn {
+	transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+	transform: scale(1.05);
+}
+
+.nav-link {
+	transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+	color: #667eea;
+}
+
+/* View transition rule */
+@view-transition {
+	navigation: auto;
+}
+

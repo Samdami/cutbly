@@ -1,17 +1,32 @@
-{% extends 'auth.html' %}
-{% block title %}Edit URL{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Edit URL - Cutbly{% endblock %}
 {% block content %}
 
-<form method="post">
-    <h2>Edit URL</h2>
-    <div class="inputbox">
-        <input type="text" name="long_url" value="{{url.long_url}}" disabled>
+<section class="pt-32 pb-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="bg-white rounded-3xl shadow-lg p-8 border border-gray-200 max-w-md mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Edit URL</h2>
+      
+      <form method="post" class="space-y-4">
+        <div>
+          <label for="long_url" class="block text-sm font-semibold text-gray-700 mb-2">Original URL</label>
+          <input type="text" id="long_url" name="long_url" value="{{ url.long_url }}" disabled
+                 class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 text-gray-600 outline-none">
+        </div>
+        
+        <div>
+          <label for="custom_url" class="block text-sm font-semibold text-gray-700 mb-2">Custom URL</label>
+          <input type="text" id="custom_url" name="custom_url" value="{{ url_for('redirect_url', short_url=url.short_url) }}" required
+                 class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#1f5469] focus:ring-2 focus:ring-[#1f5469]/20 outline-none transition-all">
+        </div>
+        
+        <div class="flex gap-4 pt-6">
+          <button type="submit" class="btn-primary text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity">Save Changes</button>
+          <a href="{{ url_for('home') }}" class="px-6 py-3 rounded-full font-semibold text-gray-700 border border-gray-300 hover:bg-gray-50 transition-colors">Cancel</a>
+        </div>
+      </form>
     </div>
-    <div class="inputbox">
-        <ion-icon name="create-outline"></ion-icon>
-        <input type="text" name="custom_url" value="{{ url_for('redirect_url', short_url=url.short_url) }}" required>
-    </div>
+  </div>
+</section>
 
-    <button type="submit">Submit changes</button>
-</form>
 {% endblock %}
